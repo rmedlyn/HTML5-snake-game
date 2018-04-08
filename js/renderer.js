@@ -70,6 +70,7 @@ MyGame.graphics = (function() {
 		
 			
 		that.reset = () => {
+			gameOver = false;
 			spec.direction = '';
 			spec.snake = [];
 			let position = {
