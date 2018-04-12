@@ -134,7 +134,7 @@ MyGame.graphics = (function() {
 					return;
 				}
 				if (headPos.x == foodPos.x && headPos.y == foodPos.y) {
-					food.reset();
+					food.reset(snakeCollision);
 					segmentsAdded = 0;
 					addSegments = true;
 				}
@@ -255,12 +255,15 @@ MyGame.graphics = (function() {
 	function Food(spec, obstacles) {
 		let that = {};
 
-		that.reset = () => {
+		that.reset = (snakeCollision = null) => {
+			if (!snakeCollision) {
+				snakeCollision = () => false;
+			}
 			let position = {
 				x: getRandomCell(),
 				y: getRandomCell()
 			};
-			while (obstacles.intersectsObstacle(position)) {
+			while (obstacles.intersectsObstacle(position) || snakeCollision(position)) {
 				position = {
 					x: getRandomCell(),
 					y: getRandomCell()
