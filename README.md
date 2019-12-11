@@ -3,3 +3,5 @@
 
 A collection static files that implement a basic snake game using HTML5 Canvas and ES6 Javascript.
 Also uses CSS3 variables and flex box.
+
+[Play the game](https://rmedlyn.github.io/HTML5-snake-game/)
